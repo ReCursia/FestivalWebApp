@@ -1,0 +1,7 @@
+﻿/.idea/
+/FestivalWebApp.Data/bin/
+/FestivalWebApp.Data/obj/
+/FestivalWebApp.API/bin/
+/FestivalWebApp.API/obj/
+/FestivalWebApp.Domain/obj/
+/FestivalWebApp.Domain/bin/
