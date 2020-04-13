@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FestivalWebApp.Data.Database;
 using FestivalWebApp.Domain.Models;
 using FestivalWebApp.Domain.Repositories;
 
@@ -7,6 +8,13 @@ namespace FestivalWebApp.Data.Repositores
 {
     public class ParticipantRepository : IParticipantRepository
     {
+        private FestivalDatabaseContext _context;
+
+        public ParticipantRepository(FestivalDatabaseContext context)
+        {
+            _context = context;
+        }
+
         public Participant GetParticipantById(int id)
         {
             throw new NotImplementedException();

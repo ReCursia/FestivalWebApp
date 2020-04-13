@@ -27,6 +27,8 @@ namespace FestivalWebApp.Data.Configurations
             builder.HasOne(participant => participant.Festival)
                 .WithMany(festival => festival.Participants)
                 .HasForeignKey(participant => participant.FestivalId);
+
+            builder.ToTable("Participants");
         }
     }
 }
