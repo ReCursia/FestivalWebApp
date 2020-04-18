@@ -6,9 +6,9 @@ namespace FestivalWebApp.Data.Database
 {
     public class FestivalDatabaseContext : DbContext
     {
-        public DbSet<FestivalDatabaseModel> festivals { get; set; }
+        public DbSet<FestivalDatabaseModel> Festivals { get; set; }
 
-        public DbSet<ParticipantDatabaseModel> participants { get; set; }
+        public DbSet<ParticipantDatabaseModel> Participants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
