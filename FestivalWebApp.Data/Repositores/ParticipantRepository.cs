@@ -23,13 +23,13 @@ namespace FestivalWebApp.Data.Repositores
         public Participant GetParticipantById(int id)
         {
             var valueToMap = _context.Participants.Find(id);
-            return _mapper.Map<ParticipantDatabaseModel, Participant>(valueToMap);
+            return _mapper.Map<Participant>(valueToMap);
         }
 
         public IEnumerable<Participant> GetAllParticipants()
         {
             var valuesToMap = _context.Participants.AsEnumerable();
-            return _mapper.Map<IEnumerable<ParticipantDatabaseModel>, IEnumerable<Participant>>(valuesToMap);
+            return _mapper.Map<IEnumerable<Participant>>(valuesToMap);
         }
 
         public IEnumerable<Participant> GetParticipantsByFestivalId(int festivalId)
@@ -37,24 +37,24 @@ namespace FestivalWebApp.Data.Repositores
             var valuesToMap = _context.Participants.Include(p => p.Festival)
                 .Where(p => p.FestivalId == festivalId)
                 .AsEnumerable();
-            return _mapper.Map<IEnumerable<ParticipantDatabaseModel>, IEnumerable<Participant>>(valuesToMap);
+            return _mapper.Map<IEnumerable<Participant>>(valuesToMap);
         }
 
         public void AddParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<Participant, ParticipantDatabaseModel>(participant);
+            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
             _context.Participants.Add(mappedValue);
         }
 
         public void UpdateParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<Participant, ParticipantDatabaseModel>(participant);
+            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
             _context.Participants.Update(mappedValue);
         }
 
         public void RemoveParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<Participant, ParticipantDatabaseModel>(participant);
+            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
             _context.Participants.Remove(mappedValue);
         }
     }

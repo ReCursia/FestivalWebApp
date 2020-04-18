@@ -22,30 +22,30 @@ namespace FestivalWebApp.Data.Repositores
         public Festival GetFestivalById(int id)
         {
             var valueToMap = _context.Festivals.Find(id);
-            return _mapper.Map<FestivalDatabaseModel, Festival>(valueToMap);
+            return _mapper.Map<Festival>(valueToMap);
         }
 
         public IEnumerable<Festival> GetAllFestivals()
         {
             var valuesToMap = _context.Festivals.AsEnumerable();
-            return _mapper.Map<IEnumerable<FestivalDatabaseModel>, IEnumerable<Festival>>(valuesToMap);
+            return _mapper.Map<IEnumerable<Festival>>(valuesToMap);
         }
 
         public void AddFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<Festival, FestivalDatabaseModel>(festival);
+            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
             _context.Festivals.Add(mappedValue);
         }
 
         public void UpdateFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<Festival, FestivalDatabaseModel>(festival);
+            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
             _context.Festivals.Update(mappedValue);
         }
 
         public void RemoveFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<Festival, FestivalDatabaseModel>(festival);
+            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
             _context.Festivals.Remove(mappedValue);
         }
     }
