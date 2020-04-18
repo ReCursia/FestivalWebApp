@@ -1,4 +1,4 @@
-﻿using FestivalWebApp.Data.Configurations;
+﻿using FestivalWebApp.Data.Database.Configurations;
 using FestivalWebApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
 

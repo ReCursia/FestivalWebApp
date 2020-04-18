@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FestivalWebApp.Data.Configurations
+namespace FestivalWebApp.Data.Database.Configurations
 {
     public class FestivalConfiguration : IEntityTypeConfiguration<FestivalDatabaseModel>
     {
