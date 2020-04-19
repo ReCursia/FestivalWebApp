@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using FestivalWebApp.Core.Models;
 using FestivalWebApp.Core.Repositories;
-using FestivalWebApp.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FestivalWebApp.DAL.Repositories
@@ -12,52 +10,44 @@ namespace FestivalWebApp.DAL.Repositories
     public class ParticipantRepository : IParticipantRepository
     {
         private readonly FestivalDatabaseContext _context;
-        private readonly IMapper _mapper;
 
-        public ParticipantRepository(FestivalDatabaseContext context, IMapper mapper)
+        public ParticipantRepository(FestivalDatabaseContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<Participant> GetParticipantById(int id)
         {
-            var valueToMap = await _context.Participants.FindAsync(id);
-            return _mapper.Map<Participant>(valueToMap);
+            return await _context.Participants.FindAsync(id);
         }
 
         public async Task<IEnumerable<Participant>> GetAllParticipants()
         {
-            var valuesToMap = await _context.Participants.ToListAsync();
-            return _mapper.Map<IEnumerable<Participant>>(valuesToMap);
+            return await _context.Participants.ToListAsync();
         }
 
         public async Task<IEnumerable<Participant>> GetParticipantsByFestivalId(int festivalId)
         {
-            var valuesToMap = await _context.Participants.Include(p => p.Festival)
+            return await _context.Participants.Include(p => p.Festival)
                 .Where(p => p.FestivalId == festivalId)
                 .ToListAsync();
-            return _mapper.Map<IEnumerable<Participant>>(valuesToMap);
         }
 
         public async Task<Participant> AddParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
-            await _context.Participants.AddAsync(mappedValue);
+            await _context.Participants.AddAsync(participant);
             return participant;
         }
 
         public async Task UpdateParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
-            _context.Participants.Update(mappedValue);
+            _context.Participants.Update(participant);
             await _context.SaveChangesAsync();
         }
 
         public async Task RemoveParticipant(Participant participant)
         {
-            var mappedValue = _mapper.Map<ParticipantDatabaseModel>(participant);
-            _context.Participants.Remove(mappedValue);
+            _context.Participants.Remove(participant);
             await _context.SaveChangesAsync();
         }
     }

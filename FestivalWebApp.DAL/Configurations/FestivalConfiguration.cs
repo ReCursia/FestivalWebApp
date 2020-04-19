@@ -1,15 +1,15 @@
-﻿using FestivalWebApp.DAL.Models;
+﻿using FestivalWebApp.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FestivalWebApp.DAL.Configurations
 {
-    public class FestivalConfiguration : IEntityTypeConfiguration<FestivalDatabaseModel>
+    public class FestivalConfiguration : IEntityTypeConfiguration<Festival>
     {
         private const int FestivalNameMaxSize = 50;
         private const int FestivalDescriptionMaxSize = 200;
 
-        public void Configure(EntityTypeBuilder<FestivalDatabaseModel> builder)
+        public void Configure(EntityTypeBuilder<Festival> builder)
         {
             builder.HasKey(festival => festival.Id);
 

@@ -1,16 +1,18 @@
-﻿using FestivalWebApp.DAL.Configurations;
-using FestivalWebApp.DAL.Models;
+﻿using FestivalWebApp.Core.Models;
+using FestivalWebApp.DAL.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace FestivalWebApp.DAL
 {
     public class FestivalDatabaseContext : DbContext
     {
-        public FestivalDatabaseContext(DbContextOptions<FestivalDatabaseContext> options) : base(options) { }
+        public FestivalDatabaseContext(DbContextOptions<FestivalDatabaseContext> options) : base(options)
+        {
+        }
 
-        public DbSet<FestivalDatabaseModel> Festivals { get; set; }
+        public DbSet<Festival> Festivals { get; set; }
 
-        public DbSet<ParticipantDatabaseModel> Participants { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

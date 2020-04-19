@@ -15,7 +15,10 @@ namespace FestivalWebApp.Core.Models
 
         public override string ToString()
         {
-            return "Festival: " + Id + " " + Name + " " + Description + " " + Date;
+            return "Festival: " + Id + " "
+                   + Name + " "
+                   + Description + " "
+                   + Date;
         }
     }
 }

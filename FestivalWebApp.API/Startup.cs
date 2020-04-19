@@ -4,7 +4,6 @@ using FestivalWebApp.BLL;
 using FestivalWebApp.Core.Repositories;
 using FestivalWebApp.Core.Services;
 using FestivalWebApp.DAL;
-using FestivalWebApp.DAL.Mappings;
 using FestivalWebApp.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +30,10 @@ namespace FestivalWebApp.API
             services.AddControllers();
 
             services.AddScoped<IFestivalService, FestivalService>();
+            services.AddScoped<IParticipantService, ParticipantService>();
+            
             services.AddTransient<IFestivalRepository, FestivalRepository>();
+            services.AddTransient<IParticipantRepository, ParticipantRepository>();
 
             services.AddDbContext<FestivalDatabaseContext>(options =>
                 options.UseInMemoryDatabase("FestivalWebApp"));
@@ -42,7 +44,7 @@ namespace FestivalWebApp.API
                     new OpenApiInfo {Title = "Festival Application", Version = "v.1.0"});
             });
 
-            services.AddAutoMapper(typeof(PresentationMappingProfile), typeof(DataMappingProfile));
+            services.AddAutoMapper(typeof(MappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

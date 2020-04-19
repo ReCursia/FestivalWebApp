@@ -33,7 +33,7 @@ namespace FestivalWebApp.BLL
             throw new NotImplementedException();
         }
 
-        public Task RemoveParticipant(Participant participant)
+        public Task RemoveParticipant(int id)
         {
             throw new NotImplementedException();
         }

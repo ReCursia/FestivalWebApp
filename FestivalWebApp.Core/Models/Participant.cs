@@ -8,9 +8,16 @@
         public string Name { get; set; }
         public string SecondName { get; set; }
 
+        public Festival Festival { get; set; }
+
         public override string ToString()
         {
-            return "Participant: " + Id + " " + Age + " " + FestivalId + " " + Name + " " + SecondName;
+            return "Participant: " + Id + " "
+                   + Age + " "
+                   + FestivalId + " "
+                   + Name + " "
+                   + SecondName + " "
+                   + Festival;
         }
     }
 }

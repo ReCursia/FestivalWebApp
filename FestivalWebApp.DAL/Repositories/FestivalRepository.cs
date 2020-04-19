@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
 using FestivalWebApp.Core.Models;
 using FestivalWebApp.Core.Repositories;
-using FestivalWebApp.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FestivalWebApp.DAL.Repositories
@@ -11,48 +9,38 @@ namespace FestivalWebApp.DAL.Repositories
     public class FestivalRepository : IFestivalRepository
     {
         private readonly FestivalDatabaseContext _context;
-        private readonly IMapper _mapper;
 
-        public FestivalRepository(FestivalDatabaseContext context, IMapper mapper)
+        public FestivalRepository(FestivalDatabaseContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<Festival> GetFestivalById(int id)
         {
-            var valueToMap = await _context.Festivals.FindAsync(id);
-            return _mapper.Map<Festival>(valueToMap);
+            return await _context.Festivals.FindAsync(id);
         }
 
         public async Task<IEnumerable<Festival>> GetAllFestivals()
         {
-            var valuesToMap = await _context.Festivals.ToListAsync();
-            return _mapper.Map<IEnumerable<Festival>>(valuesToMap);
+            return await _context.Festivals.ToListAsync();
         }
 
         public async Task<Festival> AddFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
-            await _context.Festivals.AddAsync(mappedValue);
+            await _context.Festivals.AddAsync(festival);
             await _context.SaveChangesAsync();
             return festival;
         }
 
         public async Task UpdateFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
-            var festivalToUpdate = await GetFestivalById(mappedValue.Id);
-            festivalToUpdate.Date = mappedValue.Date;
-            festivalToUpdate.Description = mappedValue.Description;
-            festivalToUpdate.Name = mappedValue.Name;
+            _context.Festivals.Update(festival);
             await _context.SaveChangesAsync();
         }
 
         public async Task RemoveFestival(Festival festival)
         {
-            var mappedValue = _mapper.Map<FestivalDatabaseModel>(festival);
-            _context.Festivals.Remove(mappedValue);
+            _context.Festivals.Remove(festival);
             await _context.SaveChangesAsync();
         }
     }

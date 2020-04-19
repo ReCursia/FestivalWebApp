@@ -55,8 +55,7 @@ namespace FestivalWebApp.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteFestival(int id)
         {
-            var festivalToRemove = await _service.GetFestivalById(id);
-            await _service.RemoveFestival(festivalToRemove);
+            await _service.RemoveFestival(id);
             return NoContent();
         }
     }
