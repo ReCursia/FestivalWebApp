@@ -23,49 +23,41 @@ namespace FestivalWebApp.Presentation.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAllFestivals()
         {
-            return await Task.Run(() => Ok(_interactor.GetAllFestivals()));
+            var festivals = await _interactor.GetAllFestivals();
+            return Ok(festivals);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetFestivalById(int id)
         {
-            return await Task.Run(() => Ok(_interactor.GetFestivalById(id)));
+            var festival = await _interactor.GetFestivalById(id);
+            return Ok(festival);
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateFestival([FromBody] FestivalRequestBody festivalRequestBody)
         {
-            return await Task.Run(() =>
-            {
-                var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
-                _interactor.AddFestival(mappedValue);
-                return Ok(mappedValue);
-            });
+            var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
+            await _interactor.AddFestival(mappedValue);
+            return Ok(mappedValue);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateFestival(int id, [FromBody] FestivalRequestBody festivalRequestBody)
         {
-            return await Task.Run(() =>
-            {
-                var festivalToUpdate = _interactor.GetFestivalById(id);
-                festivalToUpdate.Date = festivalRequestBody.Date;
-                festivalToUpdate.Description = festivalRequestBody.Description;
-                festivalToUpdate.Name = festivalRequestBody.Name;
-                _interactor.UpdateFestival(festivalToUpdate);
-                return Ok(festivalRequestBody);
-            });
+            //TODO is it ok?
+            var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
+            mappedValue.Id = id;
+            await _interactor.UpdateFestival(mappedValue);
+            return Ok(festivalRequestBody);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteFestival(int id)
         {
-            return await Task.Run(() =>
-            {
-                var festival = _interactor.GetFestivalById(id);
-                _interactor.RemoveFestival(festival);
-                return NoContent();
-            });
+            var festivalToRemove = await _interactor.GetFestivalById(id);
+            await _interactor.RemoveFestival(festivalToRemove);
+            return NoContent();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace FestivalWebApp.Data.Database
 {
     public class FestivalDatabaseContext : DbContext
     {
-        public FestivalDatabaseContext(DbContextOptions<FestivalDatabaseContext> options) : base(options) {}
+        public FestivalDatabaseContext(DbContextOptions<FestivalDatabaseContext> options) : base(options) { }
 
         public DbSet<FestivalDatabaseModel> Festivals { get; set; }
 

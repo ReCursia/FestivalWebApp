@@ -7,7 +7,7 @@ namespace FestivalWebApp.Domain.Models
     public class Festival
     {
         public int Id { get; set; }
-        
+
         public ICollection<Participant> Participants { get; set; } = new Collection<Participant>();
         public string Name { get; set; }
         public string Description { get; set; }
