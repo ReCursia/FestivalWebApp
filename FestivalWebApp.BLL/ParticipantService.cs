@@ -28,7 +28,7 @@ namespace FestivalWebApp.BLL
             throw new NotImplementedException();
         }
 
-        public Task UpdateParticipant(int id, Participant participant)
+        public Task UpdateParticipant(Participant participant)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
 ﻿namespace FestivalWebApp.API.Models
 {
-    public class ParticipantRequestBody
+    public class ParticipantCreateRequestBody
     {
         public string Name { get; set; }
         public string SecondName { get; set; }

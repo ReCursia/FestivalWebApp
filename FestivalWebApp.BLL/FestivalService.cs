@@ -30,14 +30,14 @@ namespace FestivalWebApp.BLL
             return await _repository.AddFestival(festival);
         }
 
-        public async Task UpdateFestival(int id, Festival festival)
+        public async Task UpdateFestival(Festival festival)
         {
             await _repository.UpdateFestival(festival);
         }
 
         public async Task RemoveFestival(int id)
         {
-            var festival = await _repository.GetFestivalById(id);
+            var festival = await GetFestivalById(id);
             await _repository.RemoveFestival(festival);
         }
     }

@@ -31,7 +31,7 @@ namespace FestivalWebApp.API
 
             services.AddScoped<IFestivalService, FestivalService>();
             services.AddScoped<IParticipantService, ParticipantService>();
-            
+
             services.AddTransient<IFestivalRepository, FestivalRepository>();
             services.AddTransient<IParticipantRepository, ParticipantRepository>();
 

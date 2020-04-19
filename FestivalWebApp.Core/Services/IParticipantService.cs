@@ -14,7 +14,7 @@ namespace FestivalWebApp.Core.Services
 
         Task<Participant> AddParticipant(Participant participant);
 
-        Task UpdateParticipant(int id, Participant participant);
+        Task UpdateParticipant(Participant participant);
 
         Task RemoveParticipant(int id);
     }

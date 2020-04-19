@@ -12,7 +12,7 @@ namespace FestivalWebApp.Core.Services
 
         Task<Festival> AddFestival(Festival festival);
 
-        Task UpdateFestival(int id, Festival festival);
+        Task UpdateFestival(Festival festival);
 
         Task RemoveFestival(int id);
     }

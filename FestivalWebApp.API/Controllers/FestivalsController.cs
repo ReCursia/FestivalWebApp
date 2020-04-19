@@ -35,21 +35,21 @@ namespace FestivalWebApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateFestival([FromBody] FestivalRequestBody festivalRequestBody)
+        public async Task<ActionResult> CreateFestival([FromBody] FestivalCreateRequestBody festivalCreateRequestBody)
         {
-            var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
+            var mappedValue = _mapper.Map<Festival>(festivalCreateRequestBody);
             await _service.AddFestival(mappedValue);
             return Ok(mappedValue);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateFestival(int id, [FromBody] FestivalRequestBody festivalRequestBody)
+        public async Task<ActionResult> UpdateFestival(int id,
+            [FromBody] FestivalUpdateRequestBody festivalUpdateRequestBody)
         {
-            //TODO is it ok?
-            var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
-            mappedValue.Id = id;
-            await _service.UpdateFestival(id, mappedValue);
-            return Ok(festivalRequestBody);
+            var festival = _mapper.Map<Festival>(festivalUpdateRequestBody);
+            if (id != festival.Id) return BadRequest();
+            await _service.UpdateFestival(festival);
+            return Ok(festivalUpdateRequestBody);
         }
 
         [HttpDelete("{id}")]
