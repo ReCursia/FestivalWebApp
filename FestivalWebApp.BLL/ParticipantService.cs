@@ -1,41 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using FestivalWebApp.Core.Models;
+using FestivalWebApp.Core.Repositories;
 using FestivalWebApp.Core.Services;
 
 namespace FestivalWebApp.BLL
 {
     public class ParticipantService : IParticipantService
     {
-        public Task<Participant> GetParticipantById(int id)
+        private readonly IParticipantRepository _repository;
+
+        public ParticipantService(IParticipantRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
-        public Task<IEnumerable<Participant>> GetAllParticipants()
+        public async Task<Participant> GetParticipantById(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetParticipantById(id);
         }
 
-        public Task<IEnumerable<Participant>> GetParticipantsByFestivalId(int festivalId)
+        public async Task<IEnumerable<Participant>> GetAllParticipants()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAllParticipants();
         }
 
-        public Task<Participant> AddParticipant(Participant participant)
+        public async Task<IEnumerable<Participant>> GetParticipantsByFestivalId(int festivalId)
         {
-            throw new NotImplementedException();
+            return await _repository.GetParticipantsByFestivalId(festivalId);
         }
 
-        public Task UpdateParticipant(Participant participant)
+        public async Task<Participant> AddParticipant(Participant participant)
         {
-            throw new NotImplementedException();
+            return await _repository.AddParticipant(participant);
         }
 
-        public Task RemoveParticipant(int id)
+        public async Task UpdateParticipant(Participant participant)
         {
-            throw new NotImplementedException();
+            await _repository.UpdateParticipant(participant);
+        }
+
+        public async Task RemoveParticipant(int id)
+        {
+            var participant = await GetParticipantById(id);
+            await _repository.RemoveParticipant(participant);
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FestivalWebApp.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/festival")]
     [ApiController]
     public class FestivalsController : ControllerBase
     {
@@ -35,21 +35,21 @@ namespace FestivalWebApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateFestival([FromBody] FestivalCreateRequestBody festivalCreateRequestBody)
+        public async Task<ActionResult> CreateFestival([FromBody] FestivalCreateRequestBody createRequestBody)
         {
-            var mappedValue = _mapper.Map<Festival>(festivalCreateRequestBody);
+            var mappedValue = _mapper.Map<Festival>(createRequestBody);
             await _service.AddFestival(mappedValue);
             return Ok(mappedValue);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateFestival(int id,
-            [FromBody] FestivalUpdateRequestBody festivalUpdateRequestBody)
+            [FromBody] FestivalUpdateRequestBody updateRequestBody)
         {
-            var festival = _mapper.Map<Festival>(festivalUpdateRequestBody);
+            var festival = _mapper.Map<Festival>(updateRequestBody);
             if (id != festival.Id) return BadRequest();
             await _service.UpdateFestival(festival);
-            return Ok(festivalUpdateRequestBody);
+            return Ok(festival);
         }
 
         [HttpDelete("{id}")]
