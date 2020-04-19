@@ -6,7 +6,7 @@ using FestivalWebApp.Data.Models;
 using FestivalWebApp.Domain.Models;
 using FestivalWebApp.Domain.Repositories;
 
-namespace FestivalWebApp.Data.Repositores
+namespace FestivalWebApp.Data.Repositories
 {
     public class FestivalRepository : IFestivalRepository
     {

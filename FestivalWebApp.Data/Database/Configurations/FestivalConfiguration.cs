@@ -26,6 +26,10 @@ namespace FestivalWebApp.Data.Database.Configurations
             builder.Property(festival => festival.Date)
                 .IsRequired();
 
+            builder.HasMany(f => f.Participants)
+                .WithOne(p => p.Festival)
+                .HasForeignKey(p => p.FestivalId);
+
             builder.ToTable("Festivals");
         }
     }

@@ -24,10 +24,6 @@ namespace FestivalWebApp.Data.Database.Configurations
                 .IsRequired()
                 .HasMaxLength(SecondNameMaxSize);
 
-            builder.HasOne(participant => participant.Festival)
-                .WithMany(festival => festival.Participants)
-                .HasForeignKey(participant => participant.FestivalId);
-
             builder.ToTable("Participants");
         }
     }

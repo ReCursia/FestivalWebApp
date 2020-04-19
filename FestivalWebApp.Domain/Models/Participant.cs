@@ -7,5 +7,10 @@
         public int FestivalId { get; set; }
         public string Name { get; set; }
         public string SecondName { get; set; }
+
+        public override string ToString()
+        {
+            return "Participant: " + Id + " " + Age + " " + FestivalId + " " + Name + " " + SecondName;
+        }
     }
 }

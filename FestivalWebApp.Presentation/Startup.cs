@@ -1,13 +1,11 @@
 using AutoMapper;
-using FestivalWebApp.Data.Database;
 using FestivalWebApp.Data.Database.Mappings;
-using FestivalWebApp.Data.Repositores;
+using FestivalWebApp.Data.Repositories;
 using FestivalWebApp.Domain.Interactors;
 using FestivalWebApp.Domain.Repositories;
 using FestivalWebApp.Presentation.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,11 +28,11 @@ namespace FestivalWebApp.Presentation
             services.AddControllers();
 
             services.AddScoped<IFestivalInteractor, FestivalInteractor>();
-            services.AddTransient<IFestivalRepository, FestivalRepository>();
-
+            services.AddTransient<IFestivalRepository, FestivalMockRepository>();
+            /*
             services.AddDbContext<FestivalDatabaseContext>(options =>
                 options.UseInMemoryDatabase("FestivalWebApp"));
-
+                */
 
             services.AddSwaggerGen(options =>
             {

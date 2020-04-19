@@ -7,7 +7,7 @@ using FestivalWebApp.Domain.Models;
 using FestivalWebApp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace FestivalWebApp.Data.Repositores
+namespace FestivalWebApp.Data.Repositories
 {
     public class ParticipantRepository : IParticipantRepository
     {
