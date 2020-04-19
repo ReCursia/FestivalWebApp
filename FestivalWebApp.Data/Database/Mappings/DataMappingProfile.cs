@@ -8,12 +8,8 @@ namespace FestivalWebApp.Data.Database.Mappings
     {
         public DataMappingProfile()
         {
-            CreateMap<Festival, FestivalDatabaseModel>();
-            CreateMap<Participant, ParticipantDatabaseModel>();
-
-            //TODO make it reverse??
-            CreateMap<FestivalDatabaseModel, Festival>();
-            CreateMap<ParticipantDatabaseModel, Participant>();
+            CreateMap<Festival, FestivalDatabaseModel>().ReverseMap();
+            CreateMap<Participant, ParticipantDatabaseModel>().ReverseMap();
         }
     }
 }
