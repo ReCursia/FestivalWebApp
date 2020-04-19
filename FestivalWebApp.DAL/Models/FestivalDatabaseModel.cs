@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FestivalWebApp.Data.Models
+namespace FestivalWebApp.DAL.Models
 {
     public class FestivalDatabaseModel
     {

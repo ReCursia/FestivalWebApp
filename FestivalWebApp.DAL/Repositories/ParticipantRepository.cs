@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using FestivalWebApp.Data.Database;
-using FestivalWebApp.Data.Models;
-using FestivalWebApp.Domain.Models;
-using FestivalWebApp.Domain.Repositories;
+using FestivalWebApp.Core.Models;
+using FestivalWebApp.Core.Repositories;
+using FestivalWebApp.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FestivalWebApp.Data.Repositories
+namespace FestivalWebApp.DAL.Repositories
 {
     public class ParticipantRepository : IParticipantRepository
     {

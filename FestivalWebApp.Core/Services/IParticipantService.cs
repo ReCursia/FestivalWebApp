@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using FestivalWebApp.Domain.Models;
+using FestivalWebApp.Core.Models;
 
 namespace FestivalWebApp.Core.Services
 {

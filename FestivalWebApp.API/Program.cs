@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace FestivalWebApp.Presentation
+namespace FestivalWebApp.API
 {
     public class Program
     {

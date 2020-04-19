@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApp.Presentation.Models
+﻿namespace FestivalWebApp.API.Models
 {
     public class ParticipantRequestBody
     {

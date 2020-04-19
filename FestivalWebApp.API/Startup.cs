@@ -1,10 +1,11 @@
 using AutoMapper;
-using FestivalWebApp.Data.Database;
-using FestivalWebApp.Data.Database.Mappings;
-using FestivalWebApp.Data.Repositories;
-using FestivalWebApp.Domain.Interactors;
-using FestivalWebApp.Domain.Repositories;
-using FestivalWebApp.Presentation.Mappings;
+using FestivalWebApp.API.Mappings;
+using FestivalWebApp.BLL;
+using FestivalWebApp.Core.Repositories;
+using FestivalWebApp.Core.Services;
+using FestivalWebApp.DAL;
+using FestivalWebApp.DAL.Mappings;
+using FestivalWebApp.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace FestivalWebApp.Presentation
+namespace FestivalWebApp.API
 {
     public class Startup
     {
@@ -29,7 +30,7 @@ namespace FestivalWebApp.Presentation
         {
             services.AddControllers();
 
-            services.AddScoped<IFestivalInteractor, FestivalInteractor>();
+            services.AddScoped<IFestivalService, FestivalService>();
             services.AddTransient<IFestivalRepository, FestivalRepository>();
 
             services.AddDbContext<FestivalDatabaseContext>(options =>

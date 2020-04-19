@@ -1,6 +1,6 @@
-﻿using FestivalWebApp.Domain.Models;
+﻿using FestivalWebApp.Core.Models;
 
-namespace FestivalWebApp.Data.Models
+namespace FestivalWebApp.DAL.Models
 {
     public class ParticipantDatabaseModel : Participant
     {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FestivalWebApp.Domain.Models;
-using FestivalWebApp.Presentation.Models;
+using FestivalWebApp.API.Models;
+using FestivalWebApp.Core.Models;
 
-namespace FestivalWebApp.Presentation.Mappings
+namespace FestivalWebApp.API.Mappings
 {
     public class PresentationMappingProfile : Profile
     {

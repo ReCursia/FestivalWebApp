@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApp.Domain.Models
+﻿namespace FestivalWebApp.Core.Models
 {
     public class Participant
     {

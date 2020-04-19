@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FestivalWebApp.Domain.Models
+namespace FestivalWebApp.Core.Models
 {
     public class Festival
     {

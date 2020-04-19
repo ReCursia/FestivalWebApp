@@ -1,36 +1,36 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using FestivalWebApp.Domain.Interactors;
-using FestivalWebApp.Domain.Models;
-using FestivalWebApp.Presentation.Models;
+using FestivalWebApp.API.Models;
+using FestivalWebApp.Core.Models;
+using FestivalWebApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FestivalWebApp.Presentation.Controllers
+namespace FestivalWebApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class FestivalsController : ControllerBase
     {
-        private readonly IFestivalInteractor _interactor;
         private readonly IMapper _mapper;
+        private readonly IFestivalService _service;
 
-        public FestivalsController(IFestivalInteractor interactor, IMapper mapper)
+        public FestivalsController(IFestivalService service, IMapper mapper)
         {
-            _interactor = interactor;
+            _service = service;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllFestivals()
         {
-            var festivals = await _interactor.GetAllFestivals();
+            var festivals = await _service.GetAllFestivals();
             return Ok(festivals);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetFestivalById(int id)
         {
-            var festival = await _interactor.GetFestivalById(id);
+            var festival = await _service.GetFestivalById(id);
             return Ok(festival);
         }
 
@@ -38,7 +38,7 @@ namespace FestivalWebApp.Presentation.Controllers
         public async Task<ActionResult> CreateFestival([FromBody] FestivalRequestBody festivalRequestBody)
         {
             var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
-            await _interactor.AddFestival(mappedValue);
+            await _service.AddFestival(mappedValue);
             return Ok(mappedValue);
         }
 
@@ -48,15 +48,15 @@ namespace FestivalWebApp.Presentation.Controllers
             //TODO is it ok?
             var mappedValue = _mapper.Map<Festival>(festivalRequestBody);
             mappedValue.Id = id;
-            await _interactor.UpdateFestival(mappedValue);
+            await _service.UpdateFestival(id, mappedValue);
             return Ok(festivalRequestBody);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteFestival(int id)
         {
-            var festivalToRemove = await _interactor.GetFestivalById(id);
-            await _interactor.RemoveFestival(festivalToRemove);
+            var festivalToRemove = await _service.GetFestivalById(id);
+            await _service.RemoveFestival(festivalToRemove);
             return NoContent();
         }
     }

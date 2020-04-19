@@ -1,8 +1,8 @@
-﻿using FestivalWebApp.Data.Models;
+﻿using FestivalWebApp.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FestivalWebApp.Data.Database.Configurations
+namespace FestivalWebApp.DAL.Configurations
 {
     public class FestivalConfiguration : IEntityTypeConfiguration<FestivalDatabaseModel>
     {

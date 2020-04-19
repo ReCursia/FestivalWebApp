@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FestivalWebApp.Data.Models;
-using FestivalWebApp.Domain.Models;
+using FestivalWebApp.Core.Models;
+using FestivalWebApp.DAL.Models;
 
-namespace FestivalWebApp.Data.Database.Mappings
+namespace FestivalWebApp.DAL.Mappings
 {
     public class DataMappingProfile : Profile
     {

@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:48939",
-      "sslPort": 44373
+      "applicationUrl": "http://localhost:58239",
+      "sslPort": 44387
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "FestivalWebApp.Presentation": {
+    "FestivalWebApp.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "index.html",
