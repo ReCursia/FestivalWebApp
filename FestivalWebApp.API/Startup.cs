@@ -1,10 +1,13 @@
 using AutoMapper;
 using FestivalWebApp.API.Mappings;
+using FestivalWebApp.API.Models;
+using FestivalWebApp.API.Validators;
 using FestivalWebApp.BLL;
 using FestivalWebApp.Core.Repositories;
 using FestivalWebApp.Core.Services;
 using FestivalWebApp.DAL;
 using FestivalWebApp.DAL.Repositories;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +37,12 @@ namespace FestivalWebApp.API
 
             services.AddTransient<IFestivalRepository, FestivalRepository>();
             services.AddTransient<IParticipantRepository, ParticipantRepository>();
+
+            services.AddTransient<IValidator<FestivalUpdateRequestBody>, FestivalUpdateValidator>();
+            services.AddTransient<IValidator<FestivalCreateRequestBody>, FestivalCreateValidator>();
+
+            services.AddTransient<IValidator<ParticipantUpdateRequestBody>, ParticipantUpdateValidator>();
+            services.AddTransient<IValidator<ParticipantCreateRequestBody>, ParticipantCreateValidator>();
 
             services.AddDbContext<FestivalDatabaseContext>(options =>
                 options.UseInMemoryDatabase("FestivalWebApp"));

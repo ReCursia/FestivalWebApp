@@ -3,6 +3,7 @@ using AutoMapper;
 using FestivalWebApp.API.Models;
 using FestivalWebApp.Core.Models;
 using FestivalWebApp.Core.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FestivalWebApp.API.Controllers
@@ -11,13 +12,19 @@ namespace FestivalWebApp.API.Controllers
     [ApiController]
     public class ParticipantsController : ControllerBase
     {
+        private readonly IValidator<ParticipantCreateRequestBody> _createValidator;
         private readonly IMapper _mapper;
         private readonly IParticipantService _service;
+        private readonly IValidator<ParticipantUpdateRequestBody> _updateValidator;
 
-        public ParticipantsController(IMapper mapper, IParticipantService service)
+        public ParticipantsController(IMapper mapper, IParticipantService service,
+            IValidator<ParticipantCreateRequestBody> validator,
+            IValidator<ParticipantUpdateRequestBody> updateValidator)
         {
             _mapper = mapper;
             _service = service;
+            _createValidator = validator;
+            _updateValidator = updateValidator;
         }
 
         [HttpGet]
@@ -44,6 +51,9 @@ namespace FestivalWebApp.API.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateParticipant([FromBody] ParticipantCreateRequestBody createRequestBody)
         {
+            var validationResult = await _createValidator.ValidateAsync(createRequestBody);
+            if (!validationResult.IsValid) return BadRequest(validationResult.Errors);
+
             var mappedValue = _mapper.Map<Participant>(createRequestBody);
             await _service.AddParticipant(mappedValue);
             return Ok(mappedValue);
@@ -53,6 +63,9 @@ namespace FestivalWebApp.API.Controllers
         public async Task<ActionResult> UpdateParticipant(int id,
             [FromBody] ParticipantUpdateRequestBody updateRequestBody)
         {
+            var validationResult = await _updateValidator.ValidateAsync(updateRequestBody);
+            if (!validationResult.IsValid) return BadRequest(validationResult.Errors);
+
             var participant = _mapper.Map<Participant>(updateRequestBody);
             if (id != participant.Id) return BadRequest();
 
