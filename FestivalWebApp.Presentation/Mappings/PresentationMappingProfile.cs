@@ -2,7 +2,7 @@
 using FestivalWebApp.Domain.Models;
 using FestivalWebApp.Presentation.Models;
 
-namespace FestivalWebApp.Presentation.Mappers
+namespace FestivalWebApp.Presentation.Mappings
 {
     public class PresentationMappingProfile : Profile
     {

@@ -2,7 +2,7 @@
 using FestivalWebApp.Data.Models;
 using FestivalWebApp.Domain.Models;
 
-namespace FestivalWebApp.Data.Database.Mappers
+namespace FestivalWebApp.Data.Database.Mappings
 {
     public class DataMappingProfile : Profile
     {

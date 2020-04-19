@@ -1,8 +1,10 @@
 using AutoMapper;
 using FestivalWebApp.Data.Database;
+using FestivalWebApp.Data.Database.Mappings;
 using FestivalWebApp.Data.Repositores;
 using FestivalWebApp.Domain.Interactors;
 using FestivalWebApp.Domain.Repositories;
+using FestivalWebApp.Presentation.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +42,7 @@ namespace FestivalWebApp.Presentation
                     new OpenApiInfo {Title = "Festival Application", Version = "v.1.0"});
             });
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(PresentationMappingProfile), typeof(DataMappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
