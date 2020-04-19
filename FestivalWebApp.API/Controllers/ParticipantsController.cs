@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FestivalWebApp.API.Controllers
 {
-    [Route("api/participant")]
+    [Route("api/participants")]
     [ApiController]
     public class ParticipantsController : ControllerBase
     {

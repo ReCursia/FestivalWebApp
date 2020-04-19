@@ -28,14 +28,14 @@ namespace FestivalWebApp.DAL.Repositories
 
         public async Task<IEnumerable<Participant>> GetParticipantsByFestivalId(int festivalId)
         {
-            return await _context.Participants.Include(p => p.Festival)
-                .Where(p => p.FestivalId == festivalId)
+            return await _context.Participants.Where(p => p.FestivalId == festivalId)
                 .ToListAsync();
         }
 
         public async Task<Participant> AddParticipant(Participant participant)
         {
             await _context.Participants.AddAsync(participant);
+            await _context.SaveChangesAsync();
             return participant;
         }
 
