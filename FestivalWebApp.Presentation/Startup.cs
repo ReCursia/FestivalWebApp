@@ -1,6 +1,8 @@
 using AutoMapper;
 using FestivalWebApp.Data.Database;
+using FestivalWebApp.Data.Repositores;
 using FestivalWebApp.Domain.Interactors;
+using FestivalWebApp.Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,14 +28,15 @@ namespace FestivalWebApp.Presentation
             services.AddControllers();
 
             services.AddScoped<IFestivalInteractor, FestivalInteractor>();
+            services.AddTransient<IFestivalRepository, FestivalRepository>();
 
             services.AddDbContext<FestivalDatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Default")));
+                options.UseInMemoryDatabase("FestivalWebApp"));
 
 
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("Swagger doc",
+                options.SwaggerDoc("v1",
                     new OpenApiInfo {Title = "Festival Application", Version = "v.1.0"});
             });
 

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FestivalWebApp.Presentation.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FestivalsController : ControllerBase
     {
         private readonly IFestivalInteractor _interactor;
@@ -24,7 +26,7 @@ namespace FestivalWebApp.Presentation.Controllers
             return await Task.Run(() => Ok(_interactor.GetAllFestivals()));
         }
 
-        [HttpGet("{id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> GetFestivalById(int id)
         {
             return await Task.Run(() => Ok(_interactor.GetFestivalById(id)));
