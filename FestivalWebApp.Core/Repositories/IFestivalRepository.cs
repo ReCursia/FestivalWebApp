@@ -11,5 +11,6 @@ namespace FestivalWebApp.Core.Repositories
         Task<Festival> AddFestival(Festival festival);
         Task UpdateFestival(Festival festival);
         Task RemoveFestival(Festival festival);
+        Task<bool> IsExist(int id);
     }
 }

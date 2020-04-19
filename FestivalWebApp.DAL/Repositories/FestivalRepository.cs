@@ -20,6 +20,11 @@ namespace FestivalWebApp.DAL.Repositories
             return await _context.Festivals.FindAsync(id);
         }
 
+        public async Task<bool> IsExist(int id)
+        {
+            return await _context.Festivals.FindAsync(id) != null;
+        }
+
         public async Task<IEnumerable<Festival>> GetAllFestivals()
         {
             return await _context.Festivals.ToListAsync();

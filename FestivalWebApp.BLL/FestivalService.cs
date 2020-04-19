@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FestivalWebApp.BLL.Exceptions;
 using FestivalWebApp.Core.Models;
 using FestivalWebApp.Core.Repositories;
 using FestivalWebApp.Core.Services;
@@ -32,11 +33,17 @@ namespace FestivalWebApp.BLL
 
         public async Task UpdateFestival(Festival festival)
         {
+            var isExist = await _repository.IsExist(festival.Id);
+            if (!isExist) throw new ElementNotFoundException(festival);
+
             await _repository.UpdateFestival(festival);
         }
 
         public async Task RemoveFestival(int id)
         {
+            var isExist = await _repository.IsExist(id);
+            if (!isExist) throw new ElementNotFoundException(id);
+
             var festival = await GetFestivalById(id);
             await _repository.RemoveFestival(festival);
         }

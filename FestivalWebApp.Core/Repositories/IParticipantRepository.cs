@@ -12,5 +12,6 @@ namespace FestivalWebApp.Core.Repositories
         Task<Participant> AddParticipant(Participant participant);
         Task UpdateParticipant(Participant participant);
         Task RemoveParticipant(Participant participant);
+        Task<bool> IsExist(int id);
     }
 }
