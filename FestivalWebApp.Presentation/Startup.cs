@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using FestivalWebApp.Data.Database;
+using FestivalWebApp.Domain.Interactors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace FestivalWebApp.Presentation
 {
@@ -26,15 +24,26 @@ namespace FestivalWebApp.Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IFestivalInteractor, FestivalInteractor>();
+
+            services.AddDbContext<FestivalDatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("Swagger doc",
+                    new OpenApiInfo {Title = "Festival Application", Version = "v.1.0"});
+            });
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 
@@ -43,6 +52,14 @@ namespace FestivalWebApp.Presentation
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(o =>
+            {
+                o.RoutePrefix = "";
+                o.SwaggerEndpoint("/swagger/v1/swagger.json", "Festival Application v.1.0");
+            });
         }
     }
 }
