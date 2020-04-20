@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace FestivalWebApp.API.Validators
 {
-    public class ParticipantCreateValidator: AbstractValidator<ParticipantCreateRequestBody>
+    public class ParticipantCreateValidator : AbstractValidator<ParticipantCreateRequestBody>
     {
         private const int NameMaxSize = 50;
         private const int SecondNameMaxSize = 50;
