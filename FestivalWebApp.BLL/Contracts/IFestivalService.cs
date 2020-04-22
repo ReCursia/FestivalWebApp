@@ -2,15 +2,18 @@
 using System.Threading.Tasks;
 using FestivalWebApp.Core.Models;
 
-namespace FestivalWebApp.Core.Repositories
+namespace FestivalWebApp.BLL.Contracts
 {
-    public interface IFestivalRepository
+    public interface IFestivalService
     {
         Task<Festival> GetFestivalById(int id);
+
         Task<IEnumerable<Festival>> GetAllFestivals();
+
         Task<Festival> AddFestival(Festival festival);
+
         Task UpdateFestival(Festival festival);
-        Task RemoveFestival(Festival festival);
-        Task<bool> IsExist(int id);
+
+        Task RemoveFestival(int id);
     }
 }

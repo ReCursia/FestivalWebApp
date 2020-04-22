@@ -5,8 +5,8 @@
 /FestivalWebApp.BLL/obj/
 /FestivalWebApp.DAL/obj/
 /FestivalWebApp.DAL/bin/
-/FestivalWebApp.Core/obj/
-/FestivalWebApp.Core/bin/
+/FestivalWebApp.Domain/obj/
+/FestivalWebApp.Domain/bin/
 /FestivalWebApp.BLL.Tests/obj/
 /FestivalWebApp.BLL.Tests/bin/
 /packages/

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FestivalWebApp.BLL.Contracts;
 using FestivalWebApp.BLL.Exceptions;
 using FestivalWebApp.Core.Models;
-using FestivalWebApp.Core.Repositories;
-using FestivalWebApp.Core.Services;
+using FestivalWebApp.DAL.Contracts;
 
 namespace FestivalWebApp.BLL
 {

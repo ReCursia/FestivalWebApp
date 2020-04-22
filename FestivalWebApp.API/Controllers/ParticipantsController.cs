@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using FestivalWebApp.API.Models;
+using FestivalWebApp.BLL.Contracts;
 using FestivalWebApp.Core.Models;
-using FestivalWebApp.Core.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
