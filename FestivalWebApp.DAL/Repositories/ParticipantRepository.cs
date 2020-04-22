@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using FestivalWebApp.Core.Models;
-using FestivalWebApp.Core.Repositories;
+using FestivalWebApp.DAL.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace FestivalWebApp.DAL.Repositories

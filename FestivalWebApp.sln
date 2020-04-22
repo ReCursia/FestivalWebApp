@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestivalWebApp.Core", "FestivalWebApp.Core\FestivalWebApp.Core.csproj", "{A0A956F9-5016-45F8-A981-BC32541C15E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestivalWebApp.Domain", "FestivalWebApp.Domain\FestivalWebApp.Domain.csproj", "{A0A956F9-5016-45F8-A981-BC32541C15E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestivalWebApp.DAL", "FestivalWebApp.DAL\FestivalWebApp.DAL.csproj", "{3C954150-D75D-40A8-8945-D60A7F8E96E2}"
 EndProject

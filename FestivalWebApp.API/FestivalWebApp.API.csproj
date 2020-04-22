@@ -19,8 +19,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FestivalWebApp.BLL\FestivalWebApp.BLL.csproj" />
-      <ProjectReference Include="..\FestivalWebApp.Core\FestivalWebApp.Core.csproj" />
       <ProjectReference Include="..\FestivalWebApp.DAL\FestivalWebApp.DAL.csproj" />
+      <ProjectReference Include="..\FestivalWebApp.Domain\FestivalWebApp.Domain.csproj" />
     </ItemGroup>
 
 
